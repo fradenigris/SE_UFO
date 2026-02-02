@@ -30,9 +30,9 @@ class View:
         self.txt_titolo = ft.Text(value="Avvistamenti UFO", size=30, weight=ft.FontWeight.BOLD)
 
         # Riga 1
-        self.dd_year = ft.Dropdown(label="Anno", width=200)
-        self.dd_shape = ft.Dropdown(label="Forma", width=200)
-        self.pulsante_graph = ft.ElevatedButton(text="Crea Grafo", on_click=self.controller.handle_graph)
+        self.dd_year = ft.Dropdown(label="Anno", width=200, on_change=self.controller.on_year_change)
+        self.dd_shape = ft.Dropdown(label="Forma", width=200, disabled=True, on_change=self.controller.on_shape_change)
+        self.pulsante_graph = ft.ElevatedButton(text="Crea Grafo", on_click=self.controller.handle_graph, disabled=True)
 
         row1 = ft.Row([self.dd_year, self.dd_shape, self.pulsante_graph],alignment=ft.MainAxisAlignment.CENTER)
         self.controller.populate_dd()
@@ -40,7 +40,7 @@ class View:
         self.lista_visualizzazione_1 = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
 
         # Riga 2
-        self.pulsante_path = ft.ElevatedButton(text="Calcola Percorso", on_click=self.controller.handle_path)
+        self.pulsante_path = ft.ElevatedButton(text="Calcola Percorso", on_click=self.controller.handle_path, disabled=True)
 
         row2 = ft.Row([self.pulsante_path], alignment=ft.MainAxisAlignment.CENTER)
         self.lista_visualizzazione_2 = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
